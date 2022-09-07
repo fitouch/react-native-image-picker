@@ -35,9 +35,16 @@ public class MainApplication extends Application implements ReactApplication {
         }
       };
 
+      private final ReactNativeHost mNewArchitectureNativeHost =
+      new MainApplicationReactNativeHost(this);
+
   @Override
   public ReactNativeHost getReactNativeHost() {
-    return mReactNativeHost;
+    if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
+      return mNewArchitectureNativeHost;
+    } else {
+      return mReactNativeHost;
+    }
   }
 
   @Override
